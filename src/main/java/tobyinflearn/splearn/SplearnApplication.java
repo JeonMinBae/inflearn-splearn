@@ -1,4 +1,4 @@
-package splearn.splearn;
+package tobyinflearn.splearn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
