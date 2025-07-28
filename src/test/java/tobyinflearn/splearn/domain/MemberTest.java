@@ -5,13 +5,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static tobyinflearn.splearn.domain.MemberFixture.memberRegisterRequest;
+import static tobyinflearn.splearn.domain.MemberFixture.passwordEncoder;
 
 
 class MemberTest {
 
     @Test
     @DisplayName("멤버 생성 시 멤버의 상태는 PENDING 이어야 함")
-    void createMember() {
+    void registerMember() {
         var member = member("test@test.test", "테스트");
 
         assertThat(member.getStatus()).isEqualTo(MemberStatus.PENDING);
@@ -129,21 +131,7 @@ class MemberTest {
     }
 
     private Member member(String email, String nickname) {
-        return Member.create(new MemberCreateRequest(email, nickname, "password"), passwordEncoder());
-    }
-
-    private PasswordEncoder passwordEncoder() {
-        return new PasswordEncoder() {
-            @Override
-            public String encode(String password) {
-                return "encode" + password;
-            }
-
-            @Override
-            public boolean matches(String password, String passwordHash) {
-                return encode(password).equals(passwordHash);
-            }
-        };
+        return Member.register(memberRegisterRequest(email, nickname), passwordEncoder());
     }
 
 }
