@@ -1,4 +1,4 @@
-package tobyinflearn.splearn.domain;
+package tobyinflearn.splearn.domain.shared;
 
 import java.util.regex.Pattern;
 

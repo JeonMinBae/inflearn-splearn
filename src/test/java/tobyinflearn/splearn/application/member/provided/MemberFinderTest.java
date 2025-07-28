@@ -1,4 +1,4 @@
-package tobyinflearn.splearn.application.provided;
+package tobyinflearn.splearn.application.member.provided;
 
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.DisplayName;
@@ -7,11 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.Transactional;
 import tobyinflearn.splearn.SplearnTestConfig;
-import tobyinflearn.splearn.domain.Member;
+import tobyinflearn.splearn.domain.member.Member;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static tobyinflearn.splearn.domain.MemberFixture.memberRegisterRequest;
+import static tobyinflearn.splearn.domain.memeber.MemberFixture.memberRegisterRequest;
 
 
 @Import(SplearnTestConfig.class)

@@ -1,14 +1,14 @@
-package tobyinflearn.splearn.application;
+package tobyinflearn.splearn.application.member;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-import tobyinflearn.splearn.application.provided.MemberFinder;
-import tobyinflearn.splearn.application.required.EmailSender;
-import tobyinflearn.splearn.application.required.MemberRepository;
-import tobyinflearn.splearn.domain.Member;
-import tobyinflearn.splearn.domain.PasswordEncoder;
+import tobyinflearn.splearn.application.member.provided.MemberFinder;
+import tobyinflearn.splearn.application.member.required.EmailSender;
+import tobyinflearn.splearn.application.member.required.MemberRepository;
+import tobyinflearn.splearn.domain.member.Member;
+import tobyinflearn.splearn.domain.member.PasswordEncoder;
 
 
 @Service

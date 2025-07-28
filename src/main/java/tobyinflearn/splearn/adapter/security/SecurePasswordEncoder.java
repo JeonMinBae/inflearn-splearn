@@ -2,7 +2,7 @@ package tobyinflearn.splearn.adapter.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import tobyinflearn.splearn.domain.PasswordEncoder;
+import tobyinflearn.splearn.domain.member.PasswordEncoder;
 
 
 @Component

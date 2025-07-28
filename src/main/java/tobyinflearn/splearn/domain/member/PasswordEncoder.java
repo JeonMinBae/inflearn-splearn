@@ -1,4 +1,4 @@
-package tobyinflearn.splearn.domain;
+package tobyinflearn.splearn.domain.member;
 
 public interface PasswordEncoder {
     String encode(String password);

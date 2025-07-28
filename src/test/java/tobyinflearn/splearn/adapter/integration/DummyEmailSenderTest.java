@@ -3,7 +3,7 @@ package tobyinflearn.splearn.adapter.integration;
 import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.StdIo;
 import org.junitpioneer.jupiter.StdOut;
-import tobyinflearn.splearn.domain.Email;
+import tobyinflearn.splearn.domain.shared.Email;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

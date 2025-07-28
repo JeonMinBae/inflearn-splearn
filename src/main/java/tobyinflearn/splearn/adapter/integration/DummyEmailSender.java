@@ -2,8 +2,8 @@ package tobyinflearn.splearn.adapter.integration;
 
 import org.springframework.context.annotation.Fallback;
 import org.springframework.stereotype.Component;
-import tobyinflearn.splearn.application.required.EmailSender;
-import tobyinflearn.splearn.domain.Email;
+import tobyinflearn.splearn.application.member.required.EmailSender;
+import tobyinflearn.splearn.domain.shared.Email;
 
 
 @Fallback

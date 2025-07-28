@@ -1,7 +1,8 @@
-package tobyinflearn.splearn.domain;
+package tobyinflearn.splearn.domain.memeber;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import tobyinflearn.splearn.domain.shared.Email;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

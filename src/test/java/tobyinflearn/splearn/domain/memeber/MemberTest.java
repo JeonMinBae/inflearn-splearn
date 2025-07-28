@@ -1,12 +1,16 @@
-package tobyinflearn.splearn.domain;
+package tobyinflearn.splearn.domain.memeber;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import tobyinflearn.splearn.domain.member.Member;
+import tobyinflearn.splearn.domain.member.MemberInfoUpdateRequest;
+import tobyinflearn.splearn.domain.member.MemberStatus;
+import tobyinflearn.splearn.domain.member.PasswordEncoder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static tobyinflearn.splearn.domain.MemberFixture.memberRegisterRequest;
-import static tobyinflearn.splearn.domain.MemberFixture.passwordEncoder;
+import static tobyinflearn.splearn.domain.memeber.MemberFixture.memberRegisterRequest;
+import static tobyinflearn.splearn.domain.memeber.MemberFixture.passwordEncoder;
 
 
 class MemberTest {
@@ -17,6 +21,7 @@ class MemberTest {
         var member = member("test@test.test", "테스트");
 
         assertThat(member.getStatus()).isEqualTo(MemberStatus.PENDING);
+        assertThat(member.getDetail().getRegisteredAt()).isNotNull();
     }
 
 
@@ -31,10 +36,12 @@ class MemberTest {
     @DisplayName("멤버를 활성화 시 멤버의 상태는 ACTIVE가 되어야 함")
     void activate() {
         var member = member("test@test.test", "테스트");
+        assertThat(member.getDetail().getActivatedAt()).isNull();
 
         member.activate();
 
         assertThat(member.getStatus()).isEqualTo(MemberStatus.ACTIVE);
+        assertThat(member.getDetail().getActivatedAt()).isNotNull();
     }
 
     @Test
@@ -52,11 +59,15 @@ class MemberTest {
     @DisplayName("멤버 탈퇴 시 멤버의 상태는 DEACTIVATED가 되어야 함")
     void deactivate() {
         var member = member("test@test.test", "테스트");
+        assertThat(member.getDetail().getDeactivatedAt()).isNull();
+
+
         member.activate();
 
         member.deactivate();
 
         assertThat(member.getStatus()).isEqualTo(MemberStatus.DEACTIVATED);
+        assertThat(member.getDetail().getDeactivatedAt()).isNotNull();
     }
 
     @Test
@@ -84,16 +95,6 @@ class MemberTest {
 
         assertThat(result).isTrue();
         assertThat(result2).isFalse();
-    }
-
-    @Test
-    @DisplayName("닉네임 변경 시 새로운 닉네임이 적용되어야 함")
-    void changeNickname() {
-        var member = member("test@test.test", "테스트");
-
-        member.changeNickname("새로운닉네임");
-
-        assertThat(member.getNickname()).isEqualTo("새로운닉네임");
     }
 
     @Test
@@ -128,6 +129,30 @@ class MemberTest {
     void emailFormatFail() {
         assertThatThrownBy(() -> member("invalid-email", "nickname"))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("멤버 정보 업데이트 시 닉네임, 자기소개, 프로필 주소가 올바르게 변경되어야 함")
+    void updateInfo() {
+        var member = member("test@test.test", "테스트");
+        member.activate();
+        final MemberInfoUpdateRequest updateRequest = new MemberInfoUpdateRequest("Nickname", "test1234", "자기소개");
+
+        member.updateInfo(updateRequest);
+
+        assertThat(member.getNickname()).isEqualTo(updateRequest.nickname());
+        assertThat(member.getDetail().getProfile().address()).isEqualTo(updateRequest.profileAddress());
+        assertThat(member.getDetail().getIntroduction()).isEqualTo(updateRequest.introduction());
+
+    }
+
+    @Test
+    @DisplayName("멤버 정보 업데이트 시 활성화되지 않은 멤버는 예외가 발생해야 함")
+    void updateInfoFail() {
+        var member = member("test@test.test", "테스트");
+        final MemberInfoUpdateRequest updateRequest = new MemberInfoUpdateRequest("Nickname", "test1234", "자기소개");
+
+        assertThatThrownBy(() -> member.updateInfo(updateRequest)).isInstanceOf(IllegalStateException.class);
     }
 
     private Member member(String email, String nickname) {
