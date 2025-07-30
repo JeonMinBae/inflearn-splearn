@@ -3,13 +3,10 @@ package tobyinflearn.splearn.adapter.webapi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.assertj.core.api.AssertProvider;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.json.JsonPathValueAssert;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import org.springframework.test.web.servlet.assertj.MvcTestResult;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -21,16 +18,12 @@ import tobyinflearn.splearn.application.member.required.MemberRepository;
 import tobyinflearn.splearn.domain.member.Member;
 import tobyinflearn.splearn.domain.member.MemberRegisterRequest;
 import tobyinflearn.splearn.domain.member.MemberStatus;
-import tobyinflearn.splearn.domain.memeber.MemberFixture;
 
 import java.io.UnsupportedEncodingException;
-import java.util.function.Consumer;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import static tobyinflearn.splearn.domain.memeber.MemberFixture.memberRegisterRequest;
 
 

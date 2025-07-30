@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
+import tobyinflearn.splearn.adapter.security.SecurePasswordEncoder;
 import tobyinflearn.splearn.application.member.provided.MemberFinder;
 import tobyinflearn.splearn.application.member.provided.MemberRegister;
 import tobyinflearn.splearn.application.member.required.EmailSender;

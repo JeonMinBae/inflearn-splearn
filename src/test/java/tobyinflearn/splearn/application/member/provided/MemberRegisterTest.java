@@ -15,7 +15,6 @@ import tobyinflearn.splearn.domain.member.MemberInfoUpdateRequest;
 import tobyinflearn.splearn.domain.member.MemberRegisterRequest;
 import tobyinflearn.splearn.domain.member.MemberStatus;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
